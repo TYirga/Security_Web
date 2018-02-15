@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/processeducation}"
+      th:object="${education}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+    Education :
+    Education <input type="text" th:field="*{education}" />
+    <span th:if="${#fields.hasErrors('education')}"
+          th:error="*{education}"></span><br />
+
+
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>

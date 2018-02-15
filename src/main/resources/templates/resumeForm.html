@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/process}"
+      th:object="${resume}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+    First Name : <input type="text" th:field="*{firstName}" />
+    <span th:if="${#fields.hasErrors('firstName')}"
+          th:error="*{firstName}"></span><br />
+    Last Name : <input type="text" th:field="*{lastName}" />
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:error="*{lastName}"></span><br />
+    Email : <input type="email" th:field="*{email}" />
+    <span th:if="${#fields.hasErrors('email')}"
+          th:error="*{email}"></span><br />
+    Image : <input type="image" th:field="*{image}" />
+    <span th:if="${#fields.hasErrors('image')}"
+          th:error="*{image}"></span><br />
+    Education :
+    Education <input type="text" th:field="*{education}" />
+    <a href="education.html"> Add more education </a>
+
+    <span th:if="${#fields.hasErrors('education')}"
+          th:error="*{education}"></span><br />
+
+    Experiance: <input type="text" th:field="*{experiance}" />
+    <span th:if="${#fields.hasErrors('experiance')}"
+          th:error="*{experiance}"></span><br />
+
+    Skills :
+    Begginer<input type="radio" th:field="*{skill}" value="begginer" />
+    Intermediate<input type="radio" th:field="*{skill}" value="intermediate" />
+    Proficient<input type="radio" th:field="*{skill}" value="profecient" />
+    <span th:if="${#fields.hasErrors('skill')}"
+          th:error="*{skill}"></span><br />
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>

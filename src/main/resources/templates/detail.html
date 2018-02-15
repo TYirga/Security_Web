@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<a href="/rooms">Show Completed Resume</a><br/>
+First Name : <span th:text="${resume.firstName}"></span><br/>
+Last Name: <span th:text="${resume.lastName}"></span><br />
+Email : <span th:text="${resume.email}"></span><br />
+Education : <span th:text="${resume.education}"></span><br />
+Skills : <span th:text="${resume.skill}"></span><br />
+Experiances : <span th:text="${resume.experiance}"></span><br />
+</body>
+</html>
+
