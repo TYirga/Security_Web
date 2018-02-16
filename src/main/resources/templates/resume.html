@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Resume</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+</head>
+<body>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>LastName</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="resume : ${resumes}">
+    <td th:text="${resume.firstName}"></td>
+    <td th:text="${resume.lastName}"></td>
+    <td th:text="${resume.email}"></td>
+    </tr>
+</table>
+<br />
+<u><b>Education</b></u><br />
+<table>
+    <tr>
+        <th>University Name</th>
+        <th>MAJOR</th>
+        <th>Education Level</th>
+        <th>Year of Graduation</th>
+
+    </tr>
+    <tr th:each="education : ${educations}">
+        <td th:text="${education.universityname}"></td>
+        <td th:text="${education.major}"></td>
+        <td th:text="${education.graduationyear}"></td>
+        <td th:text="${education.educationlevel}"></td>
+
+    </tr>
+</table>
+<br />
+<u><b>Experiance</b></u><br />
+
+<table>
+    <tr th:each="experiance : ${experiances}">
+        <td th:text="${experiance.profession}"></td>
+        <td th:text="${experiance.companyname}"></td>
+        <td th:text="${experiance.startingdate}"></td>
+        <td th:text="${experiance.endingdate}"></td>
+        <td th:text="${experiance.duty}"></td>
+        <td>
+            <a th:href="@{/updateexperiance/{id}(id=${experiance.id})}">Update</a>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Skills</th>
+    </tr>
+    <tr th:each="skill : ${skills}">
+        <td th:text="${skill.skillrate}"></td>
+    </tr>
+</table>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

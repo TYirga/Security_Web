@@ -7,26 +7,30 @@
 </head>
 <body>
 <form action="#"
-      th:action="@{/process}"
-      th:object="${resume}"
+      th:action="@{/processexperiance}"
+      th:object="${experiance}"
       method="post">
     <input type="hidden" th:field="*{id}" />
-    First Name : <input type="text" th:field="*{firstName}" />
-    <span th:if="${#fields.hasErrors('firstName')}"
-          th:error="*{firstName}"></span><br />
-    Last Name : <input type="text" th:field="*{lastName}" />
-    <span th:if="${#fields.hasErrors('lastName')}"
-          th:error="*{lastName}"></span><br />
-    Email : <input type="email" th:field="*{email}" />
-    <span th:if="${#fields.hasErrors('email')}"
-          th:error="*{email}"></span><br />
-    Image : <input type="image" th:field="*{image}" />
-    <span th:if="${#fields.hasErrors('image')}"
-          th:error="*{image}"></span><br />
+    profession : <input type="text" th:field="*{profession}" />
+    <span th:if="${#fields.hasErrors('profession')}"
+          th:error="*{profession}"></span><br />
+    Company Name : <input type="text" th:field="*{companyname}" />
+    <span th:if="${#fields.hasErrors('companyname')}"
+          th:error="*{companyname}"></span><br />
+    Starting Date : <input type="date" th:field="*{startingdate}" />
+    <span th:if="${#fields.hasErrors('startingdate')}"
+          th:error="*{startingdate}"></span><br />
+    Ending Date : <input type="text" th:field="*{endingdate}" />
+    <span th:if="${#fields.hasErrors('endingdate')}"
+          th:error="*{endingdate}"></span><br />
+    Duties
+    Duty: <input type="text" th:field="*{duty}" />
+    <span th:if="${#fields.hasErrors('duty')}"
+          th:error="*{duty}"></span><br />
     <input type="submit" value="Submit" />
 </form>
+</body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
 </html>

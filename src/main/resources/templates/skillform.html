@@ -7,22 +7,15 @@
 </head>
 <body>
 <form action="#"
-      th:action="@{/process}"
-      th:object="${resume}"
+      th:action="@{/processskill}"
+      th:object="${skill}"
       method="post">
     <input type="hidden" th:field="*{id}" />
-    First Name : <input type="text" th:field="*{firstName}" />
-    <span th:if="${#fields.hasErrors('firstName')}"
-          th:error="*{firstName}"></span><br />
-    Last Name : <input type="text" th:field="*{lastName}" />
-    <span th:if="${#fields.hasErrors('lastName')}"
-          th:error="*{lastName}"></span><br />
-    Email : <input type="email" th:field="*{email}" />
-    <span th:if="${#fields.hasErrors('email')}"
-          th:error="*{email}"></span><br />
-    Image : <input type="image" th:field="*{image}" />
-    <span th:if="${#fields.hasErrors('image')}"
-          th:error="*{image}"></span><br />
+    Begginer<input type="radio" th:field="*{skillrate}" value="begginer" />
+    Intermediate<input type="radio" th:field="*{skillrate}" value="intermediate" />
+    Proficient<input type="radio" th:field="*{skillrate}" value="profecient" />
+    <span th:if="${#fields.hasErrors('skillrate')}"
+          th:error="*{skillrate}"></span><br />
     <input type="submit" value="Submit" />
 </form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
