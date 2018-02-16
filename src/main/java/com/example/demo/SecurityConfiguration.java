@@ -14,31 +14,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure (HttpSecurity http) throws Exception {
         http
+
                 .authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/").hasAuthority("USER")
-                .antMatchers("/admin","/h2-console/**").hasAuthority("ADMIN")
+                .antMatchers("/").permitAll()
+                .antMatchers("/add","/addexperiance/**").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
+                .loginPage("/login").permitAll()
                 .and()
                 .httpBasic();
 
         http.headers().frameOptions().disable();
         http.csrf().disable();
     }
+
+
+
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
 
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").authorities("USER")
+        auth.inMemoryAuthentication().
+                withUser("user").password("password").authorities("USER")
                 .and()
-                .withUser("employer").password("employer").authorities("ADMIN");
+                .withUser("mgr").password("employer").authorities("ADMIN");
 
 
     }

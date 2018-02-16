@@ -83,4 +83,8 @@ public class Resume {
     public void setEducation(String education) {
         this.education = education;
     }
+
+    public void setExperiance(String experiance) {
+        this.experiance = experiance;
+    }
 }

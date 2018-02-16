@@ -7,22 +7,13 @@
 </head>
 <body>
 <form action="#"
-      th:action="@{/educationprocess}"
-      th:object="${education}"
+      th:action="@{/processsummary}"
+      th:object="${summary}"
       method="post">
     <input type="hidden" th:field="*{id}" />
-    University Name : <input type="text" th:field="*{universityname}" />
-    <span th:if="${#fields.hasErrors('universityname')}"
-          th:error="*{universityname}"></span><br />
-    Major: <input type="text" th:field="*{major}" />
-    <span th:if="${#fields.hasErrors('major')}"
-          th:error="*{major}"></span><br />
-    Education Status: <input type="text" th:field="*{educationlevel}" />
-    <span th:if="${#fields.hasErrors('educationlevel')}"
-          th:error="*{educationlevel}"></span><br />
-    Graduation Year : <input type="text" th:field="*{graduationyear}" />
-    <span th:if="${#fields.hasErrors('graduationyear')}"
-          th:error="*{graduationyear}"></span><br />
+    Summary : <input type="text" th:field="*{summaryofresume}" />
+    <span th:if="${#fields.hasErrors('summaryofresume')}"
+          th:error="*{summaryofresume}"></span><br />
     <input type="submit" value="Submit" />
 </form>
 

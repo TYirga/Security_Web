@@ -7,25 +7,21 @@
 </head>
 <body>
 <form action="#"
-      th:action="@{/educationprocess}"
-      th:object="${education}"
+      th:action="@{/processcover}"
+      th:object="${cover}"
       method="post">
     <input type="hidden" th:field="*{id}" />
-    University Name : <input type="text" th:field="*{universityname}" />
-    <span th:if="${#fields.hasErrors('universityname')}"
-          th:error="*{universityname}"></span><br />
-    Major: <input type="text" th:field="*{major}" />
-    <span th:if="${#fields.hasErrors('major')}"
-          th:error="*{major}"></span><br />
-    Education Status: <input type="text" th:field="*{educationlevel}" />
-    <span th:if="${#fields.hasErrors('educationlevel')}"
-          th:error="*{educationlevel}"></span><br />
-    Graduation Year : <input type="text" th:field="*{graduationyear}" />
-    <span th:if="${#fields.hasErrors('graduationyear')}"
-          th:error="*{graduationyear}"></span><br />
+    Introduce Yourself : <input type="text" th:field="*{introduceyourself}" />
+    <span th:if="${#fields.hasErrors('introduceyourself')}"
+          th:error="*{introduceyourself}"></span><br />
+    Explain why you would be a good fit : <input type="text" th:field="*{fit}" />
+    <span th:if="${#fields.hasErrors('fit')}"
+          th:error="*{fit}"></span><br />
+    Other : <input type="other" th:field="*{other}" />
+    <span th:if="${#fields.hasErrors('other')}"
+          th:error="*{other}"></span><br />
     <input type="submit" value="Submit" />
 </form>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

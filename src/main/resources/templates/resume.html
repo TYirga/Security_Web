@@ -6,28 +6,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
 </head>
 <body>
-<table>
-    <tr>
-        <th>First Name</th>
-        <th>LastName</th>
-        <th>Email</th>
-    </tr>
-    <tr th:each="resume : ${resumes}">
-    <td th:text="${resume.firstName}"></td>
-    <td th:text="${resume.lastName}"></td>
-    <td th:text="${resume.email}"></td>
-    </tr>
-</table>
-<br />
-<u><b>Education</b></u><br />
-<table>
-    <tr>
-        <th>University Name</th>
-        <th>MAJOR</th>
-        <th>Education Level</th>
-        <th>Year of Graduation</th>
 
-    </tr>
+<div class="container">
+      <h2>Contact Information</h2>
+    <td th:each="resume : ${resumes}">
+    <tr th:text="${resume.firstName}"> </tr>
+    <td th:text="${resume.lastName}"></td><br />
+    <td th:text="${resume.email}"></td>
+    </td>
+
+</div>
+<br />
+<div class="container">
+    <h2>Education</h2>
     <tr th:each="education : ${educations}">
         <td th:text="${education.universityname}"></td>
         <td th:text="${education.major}"></td>
@@ -35,11 +26,11 @@
         <td th:text="${education.educationlevel}"></td>
 
     </tr>
-</table>
+</div>
 <br />
-<u><b>Experiance</b></u><br />
 
-<table>
+<div class="container">
+<h2>Experiances</h2>
     <tr th:each="experiance : ${experiances}">
         <td th:text="${experiance.profession}"></td>
         <td th:text="${experiance.companyname}"></td>
@@ -47,19 +38,56 @@
         <td th:text="${experiance.endingdate}"></td>
         <td th:text="${experiance.duty}"></td>
         <td>
-            <a th:href="@{/updateexperiance/{id}(id=${experiance.id})}">Update</a>
+            <a th:href="@{/updatexperiance/{id}(id=${experiance.id})}">Update</a>
         </td>
     </tr>
-</table>
+</div>
 
-<table>
-    <tr>
-        <th>Skills</th>
-    </tr>
+    <br />
+<div class="container">
+    <h2>Skills</h2>
     <tr th:each="skill : ${skills}">
         <td th:text="${skill.skillrate}"></td>
     </tr>
-</table>
+</div>
+<br />
+<div class="container">
+<h2>References</h2>
+    <tr th:each="reference : ${references}">
+        <td th:text="${reference.firstname}"></td>
+        <td th:text="${reference.lastname}"></td>
+        <td th:text="${reference.email}"></td>
+        <td th:text="${reference.cellphone}"></td>
+        <td>
+            <a th:href="@{/updatereference/{id}(id=${reference.id})}">Update</a>
+        </td>
+    </tr>
+</div>
+<br />
+<div class="container">
+<h2>Summary</h2>
+
+    <tr th:each="summary : ${summaries}">
+        <td th:text="${summary.summaryofresume}"></td>
+        <td>
+            <a th:href="@{/updatesummary/{id}(id=${summary.id})}">Update</a>
+        </td>
+    </tr>
+<div />
+   <br />
+    <div class="container">
+        <h2>CoverPage</h2>
+
+        <tr th:each="cover : ${covers}">
+            <td th:text="${cover.introduceyourself}"></td>
+            <br />
+            <td th:text="${cover.fit}"></td>
+            <br />
+            <td th:text="${cover.other}"></td>
+        </tr>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

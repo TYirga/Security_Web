@@ -28,6 +28,16 @@ public class HomeController {
 
     @Autowired
     SkillRepository skillRepository;
+
+    @Autowired
+    ReferenceRepository referenceRepository;
+
+    @Autowired
+    SummaryRepository summaryRepository;
+
+    @Autowired
+    CoverRepository coverRepository;
+
     @RequestMapping("/")
     public String Resume(Model model){
         return "index";
@@ -45,12 +55,12 @@ public class HomeController {
             return "resumeform";
         }
         resumeRepository.save(resume);
-        return "redirect:/";
+        return "returningpage";
     }
     @RequestMapping("/update/{id}")
     public String updateResume ( @PathVariable("id") long id, Model model){
         model.addAttribute("resume", resumeRepository.findOne(id));
-        return "resumeForm";
+        return "resumeform";
     }
     @GetMapping("/addeducation")
     public String educationForm(Model model){
@@ -64,9 +74,9 @@ public class HomeController {
             return "educationform";
         }
         educationRepository.save(education);
-        return "redirect:/";
+        return "returningpage";
     }
-    @RequestMapping("/updateeducation/{id}")
+    @RequestMapping("/updateducation/{id}")
     public String updatEducation ( @PathVariable("id") long id, Model model){
         model.addAttribute("education", educationRepository.findOne(id));
         return "educationForm";
@@ -83,8 +93,13 @@ public class HomeController {
             return "experianceform";
         }
         experianceRepository.save(experiance);
-        return "redirect:/";
+        return "returningpage";
     }
+
+    @RequestMapping("/updatexperiance/{id}")
+    public String updatExperiance ( @PathVariable("id") long id, Model model){
+        model.addAttribute("experiance", experianceRepository.findOne(id));
+        return "experianceform";}
 
     @GetMapping("/addskill")
     public String SkillForm(Model model){
@@ -98,22 +113,87 @@ public class HomeController {
             return "skillform";
         }
         skillRepository.save(skill);
-        return "resume";
+        return "returningpage";
     }
     @RequestMapping("/updateskill/{id}")
-    public String updateSkill (@PathVariable("id") long id, Model model){
+    public String updateSummary (@PathVariable("id") long id, Model model){
         model.addAttribute("skill", skillRepository.findOne(id));
-        return "skillForm";
+        return "skillform";
     }
+
+
+    @GetMapping("/addreference")
+    public String referenceForm(Model model){
+        model.addAttribute("reference",new Reference());
+        return "referenceform";
+    }
+
+    @PostMapping("/processreference")
+    public String processReferenceForm(@Valid Reference reference, BindingResult result){
+        if(result.hasErrors()){
+            return "referenceform";
+        }
+        referenceRepository.save(reference);
+        return "returningpage";
+    }
+    @RequestMapping("/updatereference/{id}")
+    public String updateReference (@PathVariable("id") long id, Model model){
+        model.addAttribute("reference", skillRepository.findOne(id));
+        return "referenceform";
+    }
+
+
+
+
+    @GetMapping("/addsummary")
+    public String SummaryForm(Model model){
+        model.addAttribute("summary",new Summary());
+        return "summaryform";
+    }
+
+    @PostMapping("/processsummary")
+    public String processSummaryForm(@Valid Summary summary, BindingResult result){
+        if(result.hasErrors()){
+            return "summaryform";
+        }
+        summaryRepository.save(summary);
+        return "returningpage";
+    }
+    @RequestMapping("/updatesummary/{id}")
+    public String updateSkill (@PathVariable("id") long id, Model model){
+        model.addAttribute("summary", summaryRepository.findOne(id));
+        return "summaryform";
+    }
+
+    @GetMapping("/addcover")
+    public String CoverForm(Model model){
+        model.addAttribute("cover",new Cover());
+        return "coverform";
+    }
+
+    @PostMapping("/processcover")
+    public String processCoverForm(@Valid Cover cover, BindingResult result){
+        if(result.hasErrors()){
+            return "coverform";
+        }
+        coverRepository.save(cover);
+        return "returningpage";
+    }
+
     @RequestMapping("/resume")
     public String ResumePage(Model model){
-
         model.addAttribute("resumes",resumeRepository.findAll());
         model.addAttribute("educations",educationRepository.findAll());
        model.addAttribute("experiances", experianceRepository.findAll());
        model.addAttribute("skills", skillRepository.findAll());
+       model.addAttribute("experiances", experianceRepository.findAll());
+       model.addAttribute("summaries", summaryRepository.findAll());
+        model.addAttribute("covers", coverRepository.findAll());
         return "resume";
     }
 
-
+@RequestMapping("/login")
+    public String login(){
+        return "login";
+}
 }
