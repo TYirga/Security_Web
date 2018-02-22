@@ -5,17 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 
 @Controller
 public class HomeController {
-
+    @Autowired
+    ReferenceRepository referenceRepository;
     @Autowired
     EducationRepository educationRepository;
 
@@ -30,8 +29,7 @@ public class HomeController {
     SkillRepository skillRepository;
 
     @Autowired
-    ReferenceRepository referenceRepository;
-
+    private UserService  userService;
     @Autowired
     SummaryRepository summaryRepository;
 
@@ -43,8 +41,25 @@ public class HomeController {
         return "index";
     }
 
+@RequestMapping(value="/register", method= RequestMethod.GET)
+public String showRegistrationPage(Model model){
+        model.addAttribute("user", new User());
+        return "registration";
+}
+@RequestMapping(value="/register", method=RequestMethod.POST)
+public String ProcessRegistration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model){
+  model.addAttribute("user", user) ;
+  if(result.hasErrors()){
+      return "registration";}
+      else {
+          userService.saveUser(user);
+          model.addAttribute(("message"), "User account successfully created");
+      }
+  return "index";
+}
     @GetMapping("/add")
     public String contactForm(Model model){
+
         model.addAttribute("resume",new Resume());
         return "resumeform";
     }
@@ -141,7 +156,12 @@ public class HomeController {
         model.addAttribute("reference", skillRepository.findOne(id));
         return "referenceform";
     }
+   // @RequestMapping("/reference")
+   // public String ShowReference(User user, Principal p, Model model){
 
+       // model.addAttribute("references", referenceRepository.findAll());
+       // return "showreference";
+    //}
 
 
 
@@ -184,9 +204,9 @@ public class HomeController {
     public String ResumePage(Model model){
         model.addAttribute("resumes",resumeRepository.findAll());
         model.addAttribute("educations",educationRepository.findAll());
-       model.addAttribute("experiances", experianceRepository.findAll());
+       model.addAttribute("experiances",experianceRepository.findAll());
+        model.addAttribute("references",referenceRepository.findAll());
        model.addAttribute("skills", skillRepository.findAll());
-       model.addAttribute("experiances", experianceRepository.findAll());
        model.addAttribute("summaries", summaryRepository.findAll());
         model.addAttribute("covers", coverRepository.findAll());
         return "resume";
@@ -195,5 +215,9 @@ public class HomeController {
 @RequestMapping("/login")
     public String login(){
         return "login";
+}
+@RequestMapping("/secure")
+    public String secure(){
+        return "secure";
 }
 }
