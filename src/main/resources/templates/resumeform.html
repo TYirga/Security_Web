@@ -20,7 +20,7 @@
     Email : <input type="email" th:field="*{email}" />
     <span th:if="${#fields.hasErrors('email')}"
           th:error="*{email}"></span><br />
-    Image : <input type="image" th:field="*{image}" />
+    Image : <input type="url" th:field="*{image}" />
     <span th:if="${#fields.hasErrors('image')}"
           th:error="*{image}"></span><br />
     <input type="submit" value="Submit" />

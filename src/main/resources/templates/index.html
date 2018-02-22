@@ -5,33 +5,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><title>Tile</title></link>
 
 </head>
-<body background="index.jpeg"
-            bgground="aqua">
-<h2>Resume</h2>
-<nav th:fragment="navbarfragement" class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/add">Contact Information</a>
-            <a class="nav-item nav-link" href="/addeducation">Education</a>
-            <a class="nav-item nav-link" href="/addexperiance">Experiance</a>
-            <a class="nav-item nav-link" href="/addskill">Skills</a>
-            <a class="nav-item nav-link" href="/addreference">References</a>
-            <a class="nav-item nav-link" href="/addsummary">Summary</a>
+<body>
+<div th:replace="base::navlinks"></div>
 
-
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="/addcover">Cover Letter</a></li>
-                <li><a href="/resume">Completed Resume</a></li>
-            </ul>
-
-        </div>
-    </div>
-</nav>
 
 <div class="jumbotron text-center">
     <h1> Robo Resume</h1>
